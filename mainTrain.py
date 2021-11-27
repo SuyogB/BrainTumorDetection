@@ -86,7 +86,7 @@ model.add(Dense(64))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(2))
-model.add(Activation('softmax'))
+model.add(Activation('sigmoid'))
 
 
 # Binary CrossEntropy= 1, sigmoid
@@ -95,11 +95,7 @@ model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
 
 
-model.fit(x_train, y_train, 
-batch_size=16, 
-verbose=1, epochs=10, 
-validation_data=(x_test, y_test),
-shuffle=False)
+model.fit(x_train, y_train, batch_size=16, verbose=1, epochs=10, validation_data=(x_test, y_test),shuffle=False)
 
 
 model.save('BrainTumor10EpochsCategorical.h5')
